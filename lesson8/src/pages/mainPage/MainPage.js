@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getApi } from '../../common/api';
+import Form from '../../components/form/Form';
+import FormHook from '../formHook/FormHook';
 import PokemonPage from '../pokemonPage/PokemonPage';
 
 
@@ -17,7 +19,9 @@ const MainPage = () => {
     return (
         <>
             {/*<TodoPage/>*/}
-            <PokemonPage/>
+            {/*<PokemonPage/>*/}
+            {/*<Form/>*/}
+            <FormHook/>
         </>
     );
 };

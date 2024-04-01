@@ -33,8 +33,6 @@ const PokemonPage = () => {
         } finally {
             setLoading(false);
         }
-
-
     };
 
     useEffect(() => {

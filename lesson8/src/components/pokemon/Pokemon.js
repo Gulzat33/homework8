@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import classes from './Pokemon.module.sass';
 import ModalPokemon from '../modalPokemon/ModalPokemon';
+import axios from 'axios';
 
 
 const Pokemon = ({ pokemon }) => {
@@ -14,7 +15,23 @@ const Pokemon = ({ pokemon }) => {
         setLoading(true);
         try {
             const response = await fetch(pokemon.url);
-            const data = await response.json();
+            const data = await response.json()
+            console.log(data, 'fetch');
+
+            return data;
+        } catch(e) {
+            console.log('Error', e.message);
+        } finally {
+            setLoading(false);
+
+        }
+    };
+    const getApiAxios = async() => {
+        setLoading(true);
+        try {
+            const response = await axios(pokemon.url);
+            const data = response.data;
+            console.log(data, 'axios');
             return data;
         } catch(e) {
             console.log('Error', e.message);
@@ -27,6 +44,7 @@ const Pokemon = ({ pokemon }) => {
 
     useEffect(() => {
         getApi().then(pokemon => setPokemonOne(pokemon));
+        getApiAxios()
     }, []);
     return (
         <>
